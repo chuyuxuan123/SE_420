@@ -1,5 +1,6 @@
 package com.company;
 
+import main.java.com.company.Dictionary;
 import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.*;

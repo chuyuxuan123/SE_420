@@ -1,5 +1,7 @@
 package com.company;
 
+import main.java.com.company.Dictionary;
+import main.java.com.company.Wordladder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
