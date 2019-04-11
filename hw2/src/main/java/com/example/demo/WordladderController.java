@@ -11,11 +11,11 @@ public class WordladderController {
 
     @RequestMapping("/hello")
     public String hello() {
-        return "hello world";
+        return "hello";
     }
 
     @RequestMapping("/wordladder")
     public String result(@RequestParam(value = "word1") String word1, @RequestParam(value = "word2") String word2) {
-        return w.solve(word1,word2).toString();
+        return w.solve(word1, word2).toString();
     }
 }
