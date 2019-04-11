@@ -1,16 +1,26 @@
 package com.example.demo;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class WordladderController {
 
     Wordladder w = new Wordladder(new Dictionary("G:\\SE_420\\hw2\\src\\main\\resources\\dictionary\\smalldict1.txt"));
 
+//    @RequestMapping("/")
+//    public String index() {
+//        return "index";
+//    }
+//
+    @RequestMapping("/s")
+    public String wordladder(){
+        return "wordladder";
+    }
+
     @RequestMapping("/hello")
-    public String hello() {
+    public String hello(){
         return "hello";
     }
 
