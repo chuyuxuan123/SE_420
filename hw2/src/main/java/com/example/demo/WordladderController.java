@@ -14,7 +14,7 @@ public class WordladderController {
 //        return "index";
 //    }
 //
-    @RequestMapping("/s")
+    @RequestMapping("/main")
     public String wordladder(){
         return "wordladder";
     }
