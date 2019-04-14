@@ -3,7 +3,7 @@ package com.example.demo;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class DictionaryTest {
 
@@ -12,8 +12,8 @@ public class DictionaryTest {
     @Test
     @DisplayName("test exists()")
     public void exists() {
-        assertEquals(d1.exists("code"),true);
-        assertEquals(d1.exists("beg"),true);
-        assertEquals(d1.exists("ics"),false);
+        assertEquals(d1.exists("code"), true);
+        assertEquals(d1.exists("beg"), true);
+        assertEquals(d1.exists("ics"), false);
     }
 }
