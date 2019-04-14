@@ -8,13 +8,13 @@ function handleClick() {
     console.log(word2);
 
     $.ajax({
-        url:url,
-        data:{
-          word1:word1,
-          word2:word2,
+        url: url,
+        data: {
+            word1: word1,
+            word2: word2,
         },
-        type:"GET",
-        success:function(data){
+        type: "GET",
+        success: function (data) {
             alert(data);
         }
 

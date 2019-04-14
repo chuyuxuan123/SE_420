@@ -9,18 +9,18 @@ public class WordladderController {
 
     Wordladder w = new Wordladder(new Dictionary("G:\\SE_420\\hw2\\src\\main\\resources\\dictionary\\smalldict1.txt"));
 
-//    @RequestMapping("/")
+    //    @RequestMapping("/")
 //    public String index() {
 //        return "index";
 //    }
 //
     @RequestMapping("/main")
-    public String wordladder(){
+    public String wordladder() {
         return "wordladder";
     }
 
     @RequestMapping("/hello")
-    public String hello(){
+    public String hello() {
         return "hello";
     }
 

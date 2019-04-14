@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername("user").password("password").roles("USER").build());//这里添加了一个用户，用户名为Alice，密码123456
-        manager.createUser(User.withUsername("admin").password("password").roles("USER","ADMIN").build());
+        manager.createUser(User.withUsername("admin").password("password").roles("USER", "ADMIN").build());
         return manager;
     }
 
@@ -34,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/hello").permitAll()//供测试
                 .antMatchers("/main").hasRole("USER")//只有登录后的用户才能进入wordladder页面
 //                .anyRequest().authenticated()
-                .and().formLogin().defaultSuccessUrl("/main",true)//登录成功跳转到/main页面
+                .and().formLogin().defaultSuccessUrl("/main", true)//登录成功跳转到/main页面
                 .and().httpBasic();
 
 //        //仅测试时使用，访问所有(包括用户定义的api)endpoint不需要权限
