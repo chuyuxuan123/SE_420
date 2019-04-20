@@ -1,0 +1,15 @@
+spring:
+  profiles: client
+  application:
+    name: client
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8769/"
+server:
+  port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
