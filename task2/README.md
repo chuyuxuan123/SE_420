@@ -52,16 +52,17 @@ Spring Actuator为我们提供了很多查看service情况的端口，不过查�
 
 ......折腾了一个下午试了各种方法没有奏效，遂放弃这一项目
 
-## 用Jmeter模拟并发访问
+## 用JMeter模拟并发访问
 由于第二部分当中的可视化没有实现，所以这次的并发访问模拟也是没有很直观的展示
 
-Postman是可以做连续访问的，但是好像没法测试并发，我在网上找到一个比较方便的工具Jmeter帮助做并发测试
+Postman是可以做连续访问的，但是好像没法测试并发，我在网上找到一个比较方便的工具JMeter帮助做并发测试
 
 还是利用homework2中搭建的spring服务
 
 ### 测试hello端口
-homework2中我写了一个端口/hello用于测试，只是一个简单的端口放回一个hello,world字符串
-在JMeter中，设置好测试并发200个线程每秒
+homework2中我写了一个端口/hello用于测试，只是一个简单的端口，访问该接口会放回一个hello,world字符串
+
+一开始在JMeter中，设置好测试并发200个线程每秒，每个线程发10个请求
 ![测试设置](./image/6.png)
 测试之前，先重启一下服务（感觉之前随便测的会影响一些），然后先看一下Memory使用
 在空负载时，是158149544bytes，大概是150Mb
@@ -84,3 +85,4 @@ homework2中我写了一个端口/hello用于测试，只是一个简单的端�
 * https://www.jianshu.com/p/e9ce05b44150
 * https://blog.csdn.net/qq_32447301/article/details/84978044
 * http://codecentric.github.io/spring-boot-admin/2.1.4/
+* https://jmeter.apache.org/usermanual/get-started.html
