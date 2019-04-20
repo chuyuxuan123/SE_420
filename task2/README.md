@@ -22,7 +22,7 @@ management.endpoints.web.exposure.include=*
 
 访问`http://localhost:8080/actuator/metrics/system.cpu.usage`可以看到CPU的使用情况
 ![cpu usage](./image/4.png)
-当短时间多次访问时也能看出cpu的使用在上升
+当短时间多次访问时也能看出cpu的使用在上升，但多次快速点击时，cpu使用几乎不变
 
 Spring Actuator为我们提供了很多查看service情况的端口，不过查看的方式比较麻烦，效果也不太直观
 
@@ -48,6 +48,35 @@ Spring Actuator为我们提供了很多查看service情况的端口，不过查�
 不仅如此，在spring initializr中生成的spring-boot-admin-client的dependency还存在一些未知的问题导致client端运行起来了之后admin端并不能接收到注册的消息
 
 在stackoverflow上看到有人提示说把springboot内置容器改成jetty可以解决问题，改过之后启动程序，报错出现在spring-boot-admin-starter-client中，把这项依赖注释掉可以运行，但是没有client的效果
+
+
+......折腾了一个下午试了各种方法没有奏效，遂放弃这一项目
+
+## 用Jmeter模拟并发访问
+由于第二部分当中的可视化没有实现，所以这次的并发访问模拟也是没有很直观的展示
+
+Postman是可以做连续访问的，但是好像没法测试并发，我在网上找到一个比较方便的工具Jmeter帮助做并发测试
+
+还是利用homework2中搭建的spring服务
+
+### 测试hello端口
+homework2中我写了一个端口/hello用于测试，只是一个简单的端口放回一个hello,world字符串
+在JMeter中，设置好测试并发200个线程每秒
+![测试设置](./image/6.png)
+测试之前，先重启一下服务（感觉之前随便测的会影响一些），然后先看一下Memory使用
+在空负载时，是158149544bytes，大概是150Mb
+开始测试
+中间访问一次，内存使用334523792bytes,大约翻了一倍，这个数据非常不精准，因为200个并发处理起来还是很容易的
+第一次测试结果：
+![result1](./image/7.png)
+可以看出平均返回时间还是很快的
+
+然后我设置了2000个线程每秒，结果
+![result2](./image/8.png)
+平均的返回时间大约多了100倍，而且会有一些报错，查看错误返回的信息，上网查得知是由于短时间新建的网络链接太多，JVM_Bind异常
+![error2](./image/err2.png)
+而且很明显的发现，在2000/s的并发访问过程中，用postman去请求/actuator/metrics接口会有3-4秒的延迟，
+中间试着去请求system.cpu.usage数值达到了1，但是jvm.memory.used差不多是500Mb，这种并发比较看重cpu的能力，由于请求的数据很简单所以内存不会溢出
 
 
 ## References
