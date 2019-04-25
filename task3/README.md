@@ -24,3 +24,38 @@ docker run hello-world
 
 ## Dockerize a REST Service 
 * https://spring.io/guides/gs/spring-boot-docker/
+* https://docs.docker.com/engine/reference/builder/
+* https://www.jianshu.com/p/d05642c32929
+
+
+一开始先按照spring guides上面的教程配的，加了几个plugin，但是由于环境的原因，docker并不能启动起来
+
+于是放弃这个想法，在同学给的教程中，直接新建一个文件夹，把maven打包好的jar包与Dockerfile放在一起
+- Dockerfile
+```
+FROM openjdk:8-jdk-alpine
+
+VOLUME /tmp
+
+MAINTAINER chuyuxuan
+
+COPY demo-0.0.1-SNAPSHOT.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+执行`docker build -t chuyuxuan/docker .`创建image
+
+执行`docker run -d --name docker -p 8080:8080 chuyuxuan/docker` 开始运行
+
+不过这样的话，端口并不能映射到localhost
+
+通过docker-machine ip default查到默认的宿主IP是192.168.99.100
+
+在浏览器中输入192.168.99.100:8080就能看到页面了
+
+执行`docker login`之后输入账号密码登录docker hub
+
+然后把这个image push到dockerhub上
