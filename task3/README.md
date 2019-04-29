@@ -62,4 +62,4 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 
 ps: 在执行这一些列操作前，要先运行一下docker，否则会出错
 
-最后附上dockerhub的镜像地址https://cloud.docker.com/u/chuyuxuan/repository/docker/chuyuxuan/task3-docker
+最后附上dockerhub的镜像地址https://hub.docker.com/r/chuyuxuan/task3-docker
