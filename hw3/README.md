@@ -18,6 +18,42 @@
 
 
 
+### 使用
+
+在执行命令
+
+```
+docker run -p 9000:9000 chuyuxuan/hw3-wordladder
+docker run -p 8081:8081 chuyuxuan/hw3-login
+```
+
+之后
+
+
+
+在浏览器输入http://192.168.99.100:9090就能看到启动页面了
+
+
+
+在输入框内输入用户和密码，以及wordladder需要的两个单词后，可以得到答案
+
+
+
+这里默认的两个用户是：{user1,password1},{admin,adminpassword}
+
+
+
+认证成功后能看到wordladder的答案，由于只使用了最小规模的dictionary，所以支持的ladder只有 code -> data这一条路径
+
+
+
+最后附上dockerhub的地址：
+
+* <https://hub.docker.com/r/chuyuxuan/hw3-wordladder>
+* <https://hub.docker.com/r/chuyuxuan/hw3-login>
+
+
+
 ### 改进
 
 这个验证的思路非常的奇怪，需要把用户名密码和wordladder的信息一起发给服务一，这样感觉违反了微服务那种解耦比较明显的特点，理想的情况是在请求wordladder时，服务一会向服务二发一个认证请求，服务二接受之后根据是否认证给服务一发送一个回应，然后服务一决定是否调用wordladder的模块

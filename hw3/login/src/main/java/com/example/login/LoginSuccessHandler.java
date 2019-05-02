@@ -2,6 +2,7 @@ package com.example.login;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.ServletException;
@@ -18,13 +19,13 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 //        request.getRequestDispatcher("/login").forward(request, response);
 //        System.out.println("login success");
 
-//        SavedRequest savedRequest = (SavedRequest) request.getSession().getAttribute("SPRING_SECURITY_SAVED_REQUEST");
-//        if(savedRequest != null) {
-//            String redirectUrl =   savedRequest.getRedirectUrl();
-//            request.getSession().removeAttribute("SPRING_SECURITY_SAVED_REQUEST");
-//        }
-////        response.sendRedirect(redirectUrl);
-//        response.setStatus(200);
+        SavedRequest savedRequest = (SavedRequest) request.getSession().getAttribute("SPRING_SECURITY_SAVED_REQUEST");
+        if(savedRequest != null) {
+            String redirectUrl =   savedRequest.getRedirectUrl();
+            request.getSession().removeAttribute("SPRING_SECURITY_SAVED_REQUEST");
+        }
+//        response.sendRedirect(redirectUrl);
+        response.setStatus(200);
         response.addHeader("login", "success");
 
 
