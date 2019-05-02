@@ -30,7 +30,7 @@ public class MainController {
     public @ResponseBody
     Integer auth(@RequestParam String username, @RequestParam String password) {
 
-        String url = "http://localhost:8081/login";
+        String url = "http://192.168.99.100:8081/login";
         RestTemplate client = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 //  请勿轻易改变此提交方式，大部分的情况下，提交方式都是表单提交
