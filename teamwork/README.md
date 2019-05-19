@@ -84,3 +84,4 @@ jenkins执行pipeline的时候，会建立一个docker环境，然后由于权�
 * <https://resources.github.com/whitepapers/practical-guide-to-CI-with-Jenkins-and-GitHub/>
 * <https://jenkins.io/doc/tutorials/build-a-java-app-with-maven/>
 * <https://jenkins.io/doc/book/pipeline/syntax/>
+
