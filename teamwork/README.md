@@ -27,21 +27,21 @@
 
 新建一个项目选择一个freestyle~项目，general中选择github项目，并且输入项目的地址，源码管理中选择git，并且输入GitHub项目的地址，branch to build中可以设置为空，就是所有分支，代码库浏览器选择githubweb，ur选择项目的url（与上面项目地址url相比少了后缀——**.git**）
 
-![1558007562310](G:\SE_420\teamwork\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558007562310.png)
+![1558007562310](.\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558007562310.png)
 
 
 
 构建触发器选择**GitHub hook trigger for GITScm polling**构建环境选择Use secret text(s) or file(s)，下面绑定选择上面设置的secret text就可以了
 
-![1558007607153](G:\SE_420\teamwork\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558007607153.png)
+![1558007607153](.\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558007607153.png)
 
 构建操作这一项可以选择set build status  to "pending"
 
-![1558007734403](G:\SE_420\teamwork\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558007734403.png)
+![1558007734403](.\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558007734403.png)
 
 构建后操作选择set GitHub commit status然后默认选项，只是在默认的what中加入一个状态判断返回的选项
 
-![1558007671417](G:\SE_420\teamwork\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558007671417.png)
+![1558007671417](.\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558007671417.png)
 
 然后如果上面的那个管理hook没有选，就要在GitHub项目设置中找到webhook这一项，添加，这里的payload url必须是你的Jenkins的url加上**/github-webhook/**，比如我的是跑在8080端口，这里就要设置成**http://server_ip:8080/github-webhook/**，后面的数据形式无所谓，触发条件设置成just push就好了
 
@@ -49,7 +49,7 @@
 
 这样的话我们的CI的环境就有了，虽然没有CI的功能，因为push之后没有jenkins没有任何操作，所以理论上因该直接status设置为success，我随便试了一下，在本地push可以触发这个hook，然后jenkins的控制台上就有这次构建的输出，然后新建一个分支并且先setupstream，然后再github网站上进行pull requset也会触发hook，然后就会有jenkins的输出提示
 
-![1558008259620](G:\SE_420\teamwork\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558008259620.png)
+![1558008259620](.\img\%5CUsers%5CChuyu%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1558008259620.png)
 
 check就是jenkins的check（其实并没有），然后注意到上面有个commit是小黄点，那是因为一开始我设置的就是只返回pending，那个是pending的stauts
 
