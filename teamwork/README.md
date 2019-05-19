@@ -69,7 +69,13 @@ check就是jenkins的check（其实并没有），然后注意到上面有个com
 
 新建一个jenkins项目，并把原来的项目停止，结果github的hook还是会到原来的项目上
 
+这个问题已经解决，原因在pipeline项目针对的是单个分支上的项目代码，在设置的时候，设置refs默认是空的（更坑的是它上面推荐不填）导致没有找到对应的分支，出错
+
+解决方法是新建一个多分支的项目，就能收到hook的post请求了
+
 * <https://issues.jenkins-ci.org/browse/JENKINS-35132?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel>
+* <https://stackoverflow.com/questions/36850485/how-to-trigger-a-jenkins-2-0-pipeline-job-from-a-github-pull-request>
+* <https://issues.jenkins-ci.org/browse/JENKINS-46588>
 
 jenkins执行pipeline的时候，会建立一个docker环境，然后由于权限不够，要先把jenkins加入docker用户组里
 
