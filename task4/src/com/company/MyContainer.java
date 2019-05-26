@@ -20,12 +20,13 @@ public class MyContainer {
     }
 
     public void removeTimeout() {
-        if (list.isEmpty()) {
-            return;
-        }
-        Item lastAddItem = list.get(0);
-        if (System.currentTimeMillis() - lastAddItem.getCreateTime() > TIMEOUT) {
-            list.clear();
+        for (Item i:list
+             ) {
+            if(System.currentTimeMillis()-i.getCreateTime()>TIMEOUT){
+                list.remove(i);
+            }else {
+                break;
+            }
         }
     }
 
