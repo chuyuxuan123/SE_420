@@ -1,0 +1,21 @@
+version: '0.1'
+services:
+  config:
+    image: chuyuxuan/configserver
+    ports:
+      - "8080:8080"
+
+  eureka:
+    image: chuyuxuan/eurekaserver
+    ports:
+      - "8761:8761"
+
+
+  client:
+    image: chuyuxuan/client1
+    ports: 
+      - "8081:8081"
+    links:
+      - eureka
+      - config
+    restart: always
