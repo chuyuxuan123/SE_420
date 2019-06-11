@@ -1,0 +1,19 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8765
+spring:
+  application:
+    name: service-client
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:9098/user
+    client:
+      id: client_1
+      client-secret: 123456
+      access-token-uri: http://localhost:9098/oauth/token
+      grant-type: client_credentials,password
+      scope: server
