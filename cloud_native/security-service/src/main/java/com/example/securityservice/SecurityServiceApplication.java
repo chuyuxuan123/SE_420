@@ -11,7 +11,6 @@ import java.security.Principal;
 
 @SpringBootApplication
 @RestController
-@EnableResourceServer
 @EnableEurekaClient
 public class SecurityServiceApplication {
 

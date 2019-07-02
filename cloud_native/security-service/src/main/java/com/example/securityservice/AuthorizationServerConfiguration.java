@@ -30,8 +30,17 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         clientDetailsServiceConfigurer.inMemory()
                 .withClient("client_1")
                 .secret(finalSecret)
-                .authorizedGrantTypes("authorization_code", "refresh_token", "implicit", "password", "client_credentials")
-                .scopes("/server");
+                .authorizedGrantTypes("password", "refresh_token")
+                .scopes("/server")
+                .authorities("oauth2")
+        .and().withClient("client_2")
+        .authorizedGrantTypes("authorization_code", "refresh_token")
+//        .authorities("oauth2")
+                .scopes("app")
+        .redirectUris("www.baidu.com")
+
+        ;
+//        "authorization_code", "refresh_token", "implicit", "password", "client_credentials"
     }
 
     @Override
